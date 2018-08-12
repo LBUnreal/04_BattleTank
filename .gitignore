@@ -81,3 +81,6 @@ Plugins/*/Intermediate/*
 DerivedDataCache/*
 */DerivedCache/*
 Screenshots/Terrain.png
+
+#ignore starter content
+BattleTank/Content/StarterContent/*
