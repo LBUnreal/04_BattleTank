@@ -15,6 +15,11 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 
 private:
+	UPROPERTY(EditAnywhere)
+		float CrossHairXLocation = 0.5;
+	UPROPERTY(EditAnywhere)
+		float CrossHairYLocation = 0.33333;
+
 	ATank * GetControlledTank() const;
 	void Tick(float DeltaTime) override;
 	//Start the tank moving towards the barrel so that a shot would be where the 
