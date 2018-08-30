@@ -38,7 +38,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *HitLocation.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *HitLocation.ToString());
 		//TODO;Tell the controlled tank to aim at this point
 	}
 
@@ -54,19 +54,32 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 		FVector2D(ViewportSizeX * CrossHairXLocation, ViewportSizeY * CrossHairYLocation);
 
 	// "De-project" the screen position of the crosshair to a world direction
+	FVector LookDirection;
+
+	if (GetLookDirection(ScreenLocation, LookDirection))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("World Direction: %s"), *LookDirection.ToString());
+	}
+
 	// Line-trace along that look direction, see what we hit (up to max range)
 
-	//TODO; remove temporary assignment of OutHitLocation
-	OutHitLocation = FVector(1.0); //Assigns this a value of {1.0F, 1.0F, 1.0F}
-
-	//raycast through the dot to anything in the terrain
-
-	//if we hit anything
-		//Set the OutHitLocation to the location that was hit with the raycast
-		//return true
-	//else
-		//return false
 	return true;
+}
+
+bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const
+{
+	FVector WorldLocation;
+	FVector WorldDirection;
+
+	bool bDeprojectResult =
+		DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, WorldLocation, WorldDirection);
+
+	if (bDeprojectResult)
+	{
+		OutLookDirection = WorldDirection;
+	}
+
+	return bDeprojectResult;
 }
 
 

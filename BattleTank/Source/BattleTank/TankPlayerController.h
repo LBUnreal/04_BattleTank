@@ -26,6 +26,8 @@ private:
 	//crosshair intersects the world
 	void AimTowardsCrosshair(); 
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
+
 public:
 	void BeginPlay() override;
 
