@@ -2,6 +2,7 @@
 
 #pragma once
 #include "Tank.h"
+#include "Engine/World.h"
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
@@ -19,6 +20,8 @@ private:
 		float CrossHairXLocation = 0.5;
 	UPROPERTY(EditAnywhere)
 		float CrossHairYLocation = 0.33333;
+	UPROPERTY(EditAnywhere)
+		float LineTraceRange = 1000000;
 
 	ATank * GetControlledTank() const;
 	void Tick(float DeltaTime) override;
@@ -27,6 +30,7 @@ private:
 	void AimTowardsCrosshair(); 
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& OutHitResult) const;
 
 public:
 	void BeginPlay() override;
