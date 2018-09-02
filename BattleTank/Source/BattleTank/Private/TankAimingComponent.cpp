@@ -31,21 +31,24 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 			BarrelLocation,
 			HitLocation,
 			LaunchSpeed,
-			ESuggestProjVelocityTraceOption::DoNotTrace);
+			false,
+			0, 
+			0,
+			ESuggestProjVelocityTraceOption::DoNotTrace); //Note: optional parameters don't work; always specify values
 
-	if (bHasSuggestedProjectileVelocity)
+	if (bHasSuggestedProjectileVelocity && HitLocation != FVector(0))
 	{
 		FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
 		
 		MoveBarrelTowards(AimDirection);
 
 		float Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f: Suggested Projectile Velocity found"), Time);
+		UE_LOG(LogTemp, Warning, TEXT("%f: %s: Suggested Projectile Velocity found"), Time, *TankName);
 	}
 	else
 	{
 		float Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f: Suggested Projectile Velocity not found"), Time);
+		UE_LOG(LogTemp, Warning, TEXT("%f: %s: Suggested Projectile Velocity not found"), Time, *TankName);
 	}
 }
 
