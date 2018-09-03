@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
+#include "TankTurret.h"
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
@@ -54,10 +55,18 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel * BarrelToSet)
 {
+	//Pointer protection
+	if (!BarrelToSet) { return; }
 	Barrel = BarrelToSet;
 }
 
-//TODO add SetTurretReference
+
+void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
+{
+	//pointewr protection
+	if (!TurretToSet) { return; }
+	Turret = TurretToSet;
+}
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
@@ -69,7 +78,8 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	FRotator AimAsRotator = AimDirection.Rotation();
 	FRotator DeltaRotator = AimAsRotator - BarrelRotator;
 
-
+	//Can the DeltaRotator.Yaw be used for the Turret? Yes this can be used for the Turret->Rotate
+	Turret->Rotate(DeltaRotator.Yaw);
 	Barrel->Elevate(DeltaRotator.Pitch); 
 }
 
