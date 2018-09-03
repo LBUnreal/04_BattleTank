@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
+#include "Engine/World.h"
 #include "CoreMinimal.h"
 #include "Components/StaticMeshComponent.h"
 #include "TankBarrel.generated.h"
@@ -21,7 +21,7 @@ public:
 private:
 
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxDegreesPerSecond = 20.0F; //Sensible default
+		float MaxDegreesPerSecond = 5.0F; //Sensible default
 	UPROPERTY(EditAnywhere, Category = Setup)
 		float MaxElevationInDegrees = 40.0F; //Sensible default; does not look awkward, nor clips through the tank
 	UPROPERTY(EditAnywhere, Category = Setup)
