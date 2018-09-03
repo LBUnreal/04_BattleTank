@@ -8,16 +8,6 @@ void ATankPlayerController::BeginPlay()
 	Super::BeginPlay();
 
 	ATank* tank = GetControlledTank();
-
-	if (tank == nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Could not find player controlled tank"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("found player controlled tank: %s"), *tank->GetName());
-	}
-
 }
 
 void ATankPlayerController::Tick(float DeltaTime)

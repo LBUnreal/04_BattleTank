@@ -23,6 +23,9 @@ public:
 	ATank();
 	void AimAt(FVector HitPosition) const;
 
+	UFUNCTION(BlueprintCallable, Category = Input)
+		void Fire();
+
 	UFUNCTION(BlueprintCallable, Category = Setup)
 		void SetBarrelReference(UTankBarrel* BarrelToSet);
 

@@ -42,15 +42,8 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
 		
 		MoveBarrelTowards(AimDirection);
+	}
 
-		float Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f: %s: Suggested Projectile Velocity found"), Time, *TankName);
-	}
-	else
-	{
-		float Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f: %s: Suggested Projectile Velocity not found"), Time, *TankName);
-	}
 }
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel * BarrelToSet)

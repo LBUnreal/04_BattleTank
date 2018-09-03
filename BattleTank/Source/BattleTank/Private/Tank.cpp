@@ -34,6 +34,12 @@ void ATank::AimAt(FVector HitPosition) const
 	TankAimingComponent->AimAt(HitPosition, LaunchSpeed);
 }
 
+void ATank::Fire()
+{
+	float Time = GetWorld()->GetTimeSeconds();
+	UE_LOG(LogTemp, Warning, TEXT("%f: Tank firing"), Time);
+}
+
 void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
