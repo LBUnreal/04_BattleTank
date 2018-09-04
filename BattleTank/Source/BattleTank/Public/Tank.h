@@ -11,8 +11,7 @@
 class UTankBarrel; 
 class UTankTurret;
 class UTankAimingComponent;
-class AProjectile;
-    
+class AProjectile;    
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -43,12 +42,12 @@ public:
 	UPROPERTY(EditAnywhere, Category = Setup)
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
-	//Local barrel reference for spawning projectiles
-	UTankBarrel* Barrel = nullptr;
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	UTankAimingComponent* TankAimingComponent = nullptr;
+	//Local barrel reference for spawning projectiles
+	UTankBarrel* Barrel = nullptr;
+
 	
 };
