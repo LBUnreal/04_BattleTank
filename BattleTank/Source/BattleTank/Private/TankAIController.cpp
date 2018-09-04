@@ -6,33 +6,23 @@
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	ATank* tank = GetAIControlledTank();
-	ATank* playerTank = GetPlayerControlledTank();
-}
-
-
-ATank* ATankAIController::GetAIControlledTank() const
-{
-	return (Cast<ATank>(GetPawn()));
-}
-
-ATank* ATankAIController::GetPlayerControlledTank() const
-{
-	return (Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn()));
 }
 
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	if (GetPlayerControlledTank())
+	ATank* AIControlledTank = Cast<ATank>(GetPawn());
+	ATank* PlayerControlledTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
+
+	if (PlayerControlledTank)
 	{
 		//TODO; Move towards the player
 
 		//Aim Towards the player
-		GetAIControlledTank()->AimAt(GetPlayerControlledTank()->GetActorLocation());
+		AIControlledTank->AimAt(PlayerControlledTank->GetActorLocation());
 
-		//Fire if ready
+		AIControlledTank->Fire(); //TODO don't fire every frame
 	}
 }
 
