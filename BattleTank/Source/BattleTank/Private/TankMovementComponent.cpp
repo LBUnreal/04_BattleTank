@@ -3,26 +3,35 @@
 #include "TankMovementComponent.h"
 #include "TankTrack.h"
 
+void UTankMovementComponent::Initialize(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
+{
+
+	LeftTrack = LeftTrackToSet;
+	RightTrack = RightTrackToSet;
+}
+
+
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {
-	//float Time = GetWorld()->GetTimeSeconds();
-	
-	UE_LOG(LogTemp, Warning, TEXT("throw value: %f"), Throw);
+	if (!LeftTrack || !RightTrack)
+	{
+		return;
+	}
 
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
 	//TODO clamp speed so that it is not doubled by using other input sources
 }
 
-void UTankMovementComponent::Initialize(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
+void UTankMovementComponent::IntendMoveRight(float Throw)
 {
-	if (!LeftTrackToSet || !RightTrackToSet)
+	if (!LeftTrack || !RightTrack)
 	{
 		return;
 	}
 
-	LeftTrack = LeftTrackToSet;
-	RightTrack = RightTrackToSet;
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(-Throw);
+	//TODO clamp speed so that it is not doubled by using other input sources
 }
-
 
