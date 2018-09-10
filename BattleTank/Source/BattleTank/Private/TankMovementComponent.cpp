@@ -14,9 +14,13 @@ void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, boo
 {
 	//no need to use inherited behaviour
 	FString TankName = GetOwner()->GetName();
+	//UE_LOG(LogTemp, Warning, TEXT("%s tank move velocity: %s"),*TankName, *MoveVelocity.ToString());
+	FVector AIFowardIntention = MoveVelocity.GetSafeNormal();
+	FVector TankFoward = GetOwner()->GetActorForwardVector().GetSafeNormal();
 
-	UE_LOG(LogTemp, Warning, TEXT("%s tank move velocity: %s"),*TankName, *MoveVelocity.ToString());
+	float ForwardThrow = FVector::DotProduct(AIFowardIntention, TankFoward);
 
+	IntendMoveForward(ForwardThrow);
 }
 
 
