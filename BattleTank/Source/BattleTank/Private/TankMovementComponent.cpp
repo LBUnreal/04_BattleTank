@@ -10,6 +10,15 @@ void UTankMovementComponent::Initialize(UTankTrack* LeftTrackToSet, UTankTrack* 
 	RightTrack = RightTrackToSet;
 }
 
+void UTankMovementComponent::RequestDirectMove(const FVector & MoveVelocity, bool bForceMaxSpeed)
+{
+	//no need to use inherited behaviour
+	FString TankName = GetOwner()->GetName();
+
+	UE_LOG(LogTemp, Warning, TEXT("%s tank move velocity: %s"),*TankName, *MoveVelocity.ToString());
+
+}
+
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {

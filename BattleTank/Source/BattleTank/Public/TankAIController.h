@@ -18,6 +18,7 @@ class BATTLETANK_API ATankAIController : public AAIController
 	
 private:
 	void Tick(float DeltaTime) override;
+	float AcceptanceRadius = 3000; //3000 cm or 30 meters
 
 public:
 	void BeginPlay() override;
