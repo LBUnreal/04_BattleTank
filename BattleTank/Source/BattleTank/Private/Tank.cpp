@@ -23,7 +23,10 @@ void ATank::BeginPlay()
 
 void ATank::AimAt(FVector HitPosition) const
 {
-	//TankAimingComponent->AimAt(HitPosition, LaunchSpeed);
+	if (TankAimingComponent)
+	{
+		TankAimingComponent->AimAt(HitPosition, LaunchSpeed);
+	}
 }
 
 void ATank::Fire()
