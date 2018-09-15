@@ -9,9 +9,7 @@
 
 //Forward declarations
 class UTankBarrel; 
-class UTankTurret;
-class UTankAimingComponent;
-class AProjectile; 
+class AProjectile;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -19,8 +17,6 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
-
-	void AimAt(FVector HitPosition) const;
 
 	// Sets default values for this pawn's properties
 	ATank();
@@ -41,8 +37,6 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Input")
-	UTankAimingComponent* TankAimingComponent = nullptr;
 	//Local barrel reference for spawning projectiles
 	UTankBarrel* Barrel = nullptr;
 
