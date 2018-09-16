@@ -62,5 +62,7 @@ private:
 	void MoveBarrelTowards(FVector AimDirection);
 	float LastFireTime = 0;
 	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	bool IsBarrelMoving();
+	FVector AimDirection = FVector::ZeroVector;
 	 
 };
