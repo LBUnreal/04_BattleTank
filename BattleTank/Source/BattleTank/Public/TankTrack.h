@@ -22,5 +22,7 @@ public:
 	//F = ma (Newtons N)
 	UPROPERTY(EditDefaultsOnly, Category = "Movement")
 		float TrackMaxDrivingForce = 392280; // 40000 kg * 1 g acceleration =  40000 * 9.807 = 392280 N
-	
+private:
+	UTankTrack();
+	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 };
