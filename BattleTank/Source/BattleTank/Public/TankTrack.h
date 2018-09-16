@@ -24,5 +24,9 @@ public:
 		float TrackMaxDrivingForce = 392280; // 40000 kg * 1 g acceleration =  40000 * 9.807 = 392280 N
 private:
 	UTankTrack();
+	void BeginPlay() override;
 	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+
+	UFUNCTION()
+		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 };
