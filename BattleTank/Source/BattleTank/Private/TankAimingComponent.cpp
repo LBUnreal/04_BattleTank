@@ -83,7 +83,15 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	FRotator DeltaRotator = AimAsRotator - BarrelRotator;
 
 	//Can the DeltaRotator.Yaw be used for the Turret? Yes this can be used for the Turret->Rotate
-	Turret->Rotate(DeltaRotator.Yaw);
+	if (FMath::Abs (DeltaRotator.Yaw) > 180)
+	{
+		Turret->Rotate(-DeltaRotator.Yaw);
+	}
+	else
+	{
+		Turret->Rotate(DeltaRotator.Yaw);
+	}
+
 	Barrel->Elevate(DeltaRotator.Pitch); 
 }
 
