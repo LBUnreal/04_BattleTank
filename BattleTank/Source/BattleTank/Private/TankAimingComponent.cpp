@@ -14,6 +14,11 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
+EFiringStatus UTankAimingComponent::GetFiringStatus() const
+{
+	return FiringStatus;
+}
+
 void UTankAimingComponent::BeginPlay()
 {
 	Super::BeginPlay();

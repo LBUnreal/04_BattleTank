@@ -19,8 +19,10 @@ class BATTLETANK_API ATankAIController : public AAIController
 	
 private:
 	void Tick(float DeltaTime) override;
-	float AcceptanceRadius = 3000; //3000 cm or 30 meters
 
+protected:
+	UPROPERTY(EditAnywhere, Category = "Setup")
+		float AcceptanceRadius = 3000; //3000 cm or 30 meters; Consider EditDefaultsOnly
 public:
 	void BeginPlay() override;
 	
