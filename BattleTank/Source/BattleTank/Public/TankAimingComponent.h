@@ -19,7 +19,8 @@ enum class EFiringStatus :uint8
 {
 	Reloading,
 	Aiming,
-	Locked
+	Locked,
+	NoAmmo
 };
 
 //Holds Barrel's properties and Elevate method
@@ -36,6 +37,12 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float LaunchSpeed = 4000.0f;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+		int TankAmmo = 3;
+
+	UFUNCTION(BlueprintCallable, Category = "Firing")
+	int GetAmmoRemaining() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialize(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
@@ -66,5 +73,6 @@ private:
 	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 	bool IsBarrelMoving();
 	FVector AimDirection = FVector::ZeroVector;
+
 	 
 };
