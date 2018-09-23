@@ -134,7 +134,7 @@ bool UTankAimingComponent::IsBarrelMoving()
 	return !AimDirection.Equals(Barrel->GetForwardVector().GetSafeNormal(), 0.01);
 }
 
-int UTankAimingComponent::GetAmmoRemaining() const
+int32 UTankAimingComponent::GetAmmoRemaining() const
 {
 	return TankAmmo;
 }

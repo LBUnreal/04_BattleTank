@@ -39,13 +39,13 @@ public:
 		float LaunchSpeed = 4000.0f;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-		int TankAmmo = 3;
+		int32 TankAmmo = 3;
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-	int GetAmmoRemaining() const;
+		int32 GetAmmoRemaining() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void Initialize(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
+		void Initialize(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
 	UFUNCTION(BlueprintCallable, Category = "Input")
 		void Fire();
