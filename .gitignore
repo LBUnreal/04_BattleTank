@@ -80,8 +80,7 @@ Plugins/*/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 */DerivedCache/*
-Screenshots/Terrain.png
+
 
 #ignore starter content
-BattleTank/Content/StarterContent/*
-Screenshots/HowTheBarrelElevates.png
+
