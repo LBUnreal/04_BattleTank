@@ -19,10 +19,13 @@ class BATTLETANK_API ATankAIController : public AAIController
 	
 private:
 	void Tick(float DeltaTime) override;
+	void SetPawn(APawn* InPawn) override;
+	UFUNCTION()
+		void OnPossessedTankDeath();
 
 protected:
-	UPROPERTY(EditAnywhere, Category = "Setup")
-		float AcceptanceRadius = 3000; //3000 cm or 30 meters; Consider EditDefaultsOnly
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		float AcceptanceRadius = 8000; //8000 cm or 80 meters; Consider EditDefaultsOnly
 public:
 	void BeginPlay() override;
 	

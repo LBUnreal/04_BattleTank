@@ -10,6 +10,7 @@
 //Forward declarations
 class UTankBarrel; 
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTankDelegate);
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -24,6 +25,8 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Health")
 	float GetHealthPercent() const;
 
+	FTankDelegate OnDeath;
+
 protected:
 	// Called when the game starts or when spawned
 	void BeginPlay() override;
@@ -37,4 +40,5 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Health")
 		 int32 CurrentHealth = StartingHealth;
+
 };
