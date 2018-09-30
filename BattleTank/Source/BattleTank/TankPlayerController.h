@@ -39,6 +39,9 @@ private:
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector& OutHitResult) const;
 
 	UTankAimingComponent* AimingComponent = nullptr;
+	void SetPawn(APawn* InPawn) override;
+	UFUNCTION()
+		void OnPossessedTankDeath();
 
 public:
 	void BeginPlay() override;

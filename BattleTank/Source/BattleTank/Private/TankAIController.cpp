@@ -3,6 +3,7 @@
 #include "TankAIController.h"
 #include "TankAimingComponent.h"
 #include "Tank.h" //So we can implement on Death
+#include "Runtime/Engine/Classes/GameFramework/Pawn.h"
 
 void ATankAIController::BeginPlay()
 {
@@ -16,7 +17,7 @@ void ATankAIController::Tick(float DeltaTime)
 	APawn* AIControlledTank = GetPawn();
 	APawn* PlayerControlledTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 
-	if (!ensure(PlayerControlledTank && AIControlledTank)) { return; }
+	if (!(PlayerControlledTank && AIControlledTank)) { return; }
 	
 	//Move towards the player
 	MoveToActor(PlayerControlledTank, AcceptanceRadius);
@@ -51,5 +52,6 @@ void ATankAIController::SetPawn(APawn* InPawn)
 
 void ATankAIController::OnPossessedTankDeath()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Tank died"));
+	if (!ensure(GetPawn())) { return; }
+	GetPawn()->DetachFromControllerPendingDestroy();
 }
