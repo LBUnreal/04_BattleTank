@@ -42,7 +42,7 @@ void ATankAIController::SetPawn(APawn* InPawn)
 	if (InPawn)
 	{
 		ATank* PossessedTank = Cast<ATank>(InPawn);
-		if (!ensure(PossessedTank)) { return; }
+		if (!(PossessedTank)) { return; }
 
 		//Note: Doing this here because the constructor is too early and 
 		//BeginPlay might cause a race condition
